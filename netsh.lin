@@ -1,0 +1,19 @@
+netsh 使用例子
+1、配置静态ip 与 dns 
+.配置静态ip
+netsh interface ipv4 set address name="WLAN" source=static addr=192.168.1.100 mask=255.255.255.0 gateway=192.168.1.1
+.配置主dns 
+netsh interface ipv4 set dns name="WLAN" static 8.8.8.8
+.配置副dns
+netsh interface ipv4 add dns name="WLAN" 8.8.4.4 index=2
+
+2、无线网络管理
+.配置网络热点
+netsh wlan set hostednetwork mode=allow ssid=MyHotspot key=Password123
+.启用网络热点
+netsh wlan start hostednetwork
+
+保存/恢复WiFi配置文件：
+
+netsh wlan  export profile name="mywifi" folder=C:\Backup
+netsh wlan add profile filename="C:\Backup\mywifi.xml"
