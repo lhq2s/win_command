@@ -14,7 +14,7 @@ ipconfig /all
 
 
 设置dns 服务器
-netsh interface ipv4 set dnsservers "WLAN" static 8.8.8.8 primary
+netsh interface ipv4 set dnsservers "WLAN" static 1.1.1.1 primary
 
 刷新 dns 
 ipconfig /flushdns 
