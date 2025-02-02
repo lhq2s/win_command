@@ -4,6 +4,9 @@
 查看网络连接名称
 netsh interface show interface
 
+查看 wlan 的 ip 地址及dns  等信息
+netsh interface ipv4 show config "WLAN"
+
 查看网络连接的 ip 地址
 netsh interface ipv4 show addresses
 

@@ -1,0 +1,56 @@
+ndows中，可以通过命令行工具（CMD或PowerShell）设置环境变量，以下是具体方法：
+使用命令提示符（CMD）
+临时设置环境变量
+使用set命令可以临时设置环境变量，仅对当前CMD会话有效：
+cmd复制
+set MY_VARIABLE=value
+例如，设置path变量：
+cmd复制
+set path=%path%;C:\newpath
+这种设置在关闭CMD窗口后失效。
+永久设置环境变量
+使用setx命令可以永久设置环境变量：
+cmd复制
+setx MY_VARIABLE "value"
+如果需要设置系统级别的环境变量（对所有用户有效），需要加上/M参数：
+cmd复制
+setx MY_VARIABLE "value" /M
+注意，setx设置的变量不会影响已经打开的CMD窗口，需要重新打开CMD窗口才能生效。
+查看环境变量
+查看所有环境变量：
+cmd复制
+set
+查看特定环境变量：
+cmd复制
+set MY_VARIABLE
+删除环境变量
+删除环境变量可以将其值设置为空：
+cmd复制
+set MY_VARIABLE=
+使用PowerShell
+临时设置环境变量
+使用$env:可以临时设置环境变量，仅对当前PowerShell会话有效：
+powershell复制
+$env:MY_VARIABLE = "value"
+例如，设置path变量：
+powershell复制
+$env:path = "$env:path;C:\newpath"
+永久设置环境变量
+使用.NET的System.Environment类来永久设置环境变量：
+powershell复制
+[System.Environment]::SetEnvironmentVariable("MY_VARIABLE", "value", [System.EnvironmentVariableTarget]::User)
+如果需要设置系统级别的环境变量，需要使用[System.EnvironmentVariableTarget]::Machine，并以管理员身份运行PowerShell。
+查看环境变量
+查看所有环境变量：
+powershell复制
+Get-ChildItem Env:
+查看特定环境变量：
+powershell
+$env:MY_VARIABLE
+删除环境变量
+删除环境变量：
+powershell复制
+[System.Environment]::SetEnvironmentVariable("MY_VARIABLE", $null, [System.EnvironmentVariableTarget]::User)
+注意事项
+使用setx或.NET方法设置的环境变量在当前会话中不会立即生效，需要重新打开命令行窗口。
+修改系统级别的环境变量时，需要以管理员身份运行CMD或PowerShell。
